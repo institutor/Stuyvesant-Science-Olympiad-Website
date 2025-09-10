@@ -1,0 +1,159 @@
+/* src/index.css */
+@import "tailwindcss";
+
+* {
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4a9eff, #00ff88);
+    border-radius: 4px;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    left: 0;
+    top: 0;
+    transform: translate(var(--mouse-x, 0), var(--mouse-y, 0)) translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease;
+}
+
+.custom-cursor.hover {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.content-section {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    pointer-events: none;
+}
+
+.content-section > * {
+    pointer-events: auto;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+}
+
+.hero-title span {
+    display: inline-block;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+}
+
+.sponsor-logo {
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.sponsor-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 10000;
+    transition: opacity 0.5s ease;
+}
+
+.dna-loader {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.dna-strand {
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #4a9eff, #00ff88);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: dna-rotate 2s linear infinite;
+}
+
+.dna-strand:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+@keyframes dna-rotate {
+    0% { transform: translateX(-50%) rotateY(0deg); }
+    100% { transform: translateX(-50%) rotateY(360deg); }
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #4a9eff, #00ff88);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+a,
+button {
+    cursor: none;
+}
