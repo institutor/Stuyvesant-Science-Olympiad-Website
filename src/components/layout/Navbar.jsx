@@ -12,7 +12,7 @@ const Navbar = () => {
         <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-in-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'}`}>
             <div className="max-w-7xl mx-auto flex justify-between items-center p-5 backdrop-blur-sm bg-black/20 rounded-b-2xl">
                 <a href="#home" aria-label="Back to top">
-                    <img src="src\components\images\logo.png" alt="Stuyvesant Science Olympiad Logo" className="h-22 w-auto" />
+                    <img src="src/assets/logo.png" alt="Stuyvesant Science Olympiad Logo" className="h-22 w-auto" />
                 </a>
                 
                 <div className="hidden md:flex gap-8 text-slate-300">
