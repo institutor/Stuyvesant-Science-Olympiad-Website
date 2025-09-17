@@ -1,4 +1,9 @@
-import { FiHome, FiInfo, FiAward, FiMessageSquare, FiHeart, FiStar } from 'react-icons/fi';
+
+import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { FiHome, FiInfo, FiAward, FiMessageSquare, FiHeart } from 'react-icons/fi';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const navLinks = [
     { href: "#home", label: "Home", icon: FiHome },
@@ -8,8 +13,22 @@ const navLinks = [
     { href: "#sponsors", label: "Sponsors", icon: FiHeart },
 ];
 
+
+const handleLinkClick = (e, href) => {
+    e.preventDefault(); 
+    gsap.to(window, { 
+        duration: 1.5, 
+        scrollTo: href,
+        ease: 'power2.inOut' 
+    });
+};
+
 const NavLink = ({ href, label, icon: Icon }) => (
-    <a href={href} className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-slate-800/50 hover:bg-cyan-500/50 transition-colors">
+    <a 
+      href={href} 
+      onClick={(e) => handleLinkClick(e, href)}
+      className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-slate-800/50 hover:bg-cyan-500/50 transition-colors"
+    >
         <Icon className="h-6 w-6 text-slate-300 group-hover:text-white" />
         <div className="absolute left-full ml-4 px-3 py-2 bg-slate-800 text-slate-200 text-sm rounded-md whitespace-nowrap opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all origin-left">
             {label}
@@ -20,7 +39,11 @@ const NavLink = ({ href, label, icon: Icon }) => (
 const Navbar = () => {
     return (
         <nav className="fixed top-0 left-0 h-screen w-20 flex flex-col items-center gap-y-8 py-8 bg-black/20 backdrop-blur-md border-r border-white/10 z-[100]">
-            <a href="#home" aria-label="Back to top">
+            <a 
+              href="#home" 
+              aria-label="Back to top"
+              onClick={(e) => handleLinkClick(e, "#home")}
+            >
                 <img src="/images/logo.png" alt="Logo" className="h-10 w-auto" />
             </a>
             
