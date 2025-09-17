@@ -29,42 +29,29 @@ const TrackRecord = forwardRef((props, ref) => {
   const containerRef = useRef();
 
   useGSAP(() => {
-    const timer = setTimeout(() => {
-      const cards = gsap.utils.toArray('.scroll-stack-card');  
-      gsap.to(cards, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 80%",
-              end: "top 50%",
-              scrub: true
-          }
-      });
-      cards.forEach((card, index) => {
-        if (index === cards.length - 1) return;
+    const cards = gsap.utils.toArray('.scroll-stack-card');
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        pin: true,  
+        scrub: 1,    
+        start: "top top",
+        end: `+=${cards.length * 500}`, 
+      }
+    });
+    cards.forEach((card, index) => {
+      if (index < cards.length - 1) {
+        tl.to(card, {
+          scale: 0.95 - (index * 0.025), 
+          y: `-=${index * 5}`,
+        }, index * 0.2); 
+      }
+    });
 
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top top",
-          endTrigger: ".track-record-end",
-          end: "top top",
-          pin: true,
-          pinSpacing: false,
-          scrub: 0.5,
-        });
-      });
-
-      ScrollTrigger.refresh();
-    }, 100);
-
-    return () => clearTimeout(timer);
   }, { scope: containerRef });
 
   return (
-    <section ref={ref} className="content-section" id="track-record">
+    <section ref={ref} id="track-record" className="relative z-10 pt-24">
       <div ref={containerRef} className="w-full max-w-7xl mx-auto px-8 text-center">
         <h2 className="text-5xl font-bold mb-4">Our Track Record</h2>
         <p className="text-xl text-gray-400 mb-20">A legacy of excellence and a future of innovation.</p>
@@ -77,7 +64,6 @@ const TrackRecord = forwardRef((props, ref) => {
             </ScrollStackItem>
           ))}
         </ScrollStack>
-        <div className="track-record-end h-[20vh]"></div>
       </div>
     </section>
   );
