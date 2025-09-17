@@ -21,7 +21,7 @@ const Navbar = () => {
     return (
         <nav className="fixed top-0 left-0 h-screen w-20 flex flex-col items-center gap-y-8 py-8 bg-black/20 backdrop-blur-md border-r border-white/10 z-[100]">
             <a href="#home" aria-label="Back to top">
-                <img src="/assets/logo.png" alt="Logo" className="h-10 w-auto" />
+                <img src="/images/logo.png" alt="Logo" className="h-10 w-auto" />
             </a>
             
             <div className="flex flex-col gap-y-5">
