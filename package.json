@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://institutor.github.io/stuyvesant-summer-tutoring-website",
+  "homepage": "https://your-username.github.io/your-repo-name",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
