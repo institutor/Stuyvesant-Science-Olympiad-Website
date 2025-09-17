@@ -1,4 +1,3 @@
-
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { FiHome, FiInfo, FiAward, FiMessageSquare, FiHeart } from 'react-icons/fi';
@@ -13,13 +12,15 @@ const navLinks = [
     { href: "#sponsors", label: "Sponsors", icon: FiHeart },
 ];
 
-
 const handleLinkClick = (e, href) => {
-    e.preventDefault(); 
+    e.preventDefault();
     gsap.to(window, { 
-        duration: 1.5, 
-        scrollTo: href,
-        ease: 'power2.inOut' 
+        duration: 1.5,
+        scrollTo: { 
+            y: href, 
+            align: "center" 
+        },
+        ease: 'power2.inOut'
     });
 };
 
