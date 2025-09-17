@@ -1,27 +1,33 @@
-import { useEffect, useState } from 'react';
+import { FiHome, FiInfo, FiAward, FiMessageSquare, FiHeart, FiStar } from 'react-icons/fi';
+
+const navLinks = [
+    { href: "#home", label: "Home", icon: FiHome },
+    { href: "#about", label: "About", icon: FiInfo },
+    { href: "#achievements", label: "Achievements", icon: FiAward },
+    { href: "#updates", label: "Updates", icon: FiMessageSquare },
+    { href: "#sponsors", label: "Sponsors", icon: FiHeart },
+];
+
+const NavLink = ({ href, label, icon: Icon }) => (
+    <a href={href} className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-slate-800/50 hover:bg-cyan-500/50 transition-colors">
+        <Icon className="h-6 w-6 text-slate-300 group-hover:text-white" />
+        <div className="absolute left-full ml-4 px-3 py-2 bg-slate-800 text-slate-200 text-sm rounded-md whitespace-nowrap opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all origin-left">
+            {label}
+        </div>
+    </a>
+);
 
 const Navbar = () => {
-    const [visible, setVisible] = useState(false);
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setVisible(true);
-        }, 500);
-        return () => clearTimeout(timer);
-    }, []);
     return (
-        <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-in-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'}`}>
-            <div className="max-w-7xl mx-auto flex justify-between items-center p-5 backdrop-blur-sm bg-black/20 rounded-b-2xl">
-                <a href="#home" aria-label="Back to top">
-                    <img src="src/assets/logo.png" alt="Stuyvesant Science Olympiad Logo" className="h-22 w-auto" />
-                </a>
-                
-                <div className="hidden md:flex gap-8 text-slate-300">
-                    <a href="#home" className="hover:text-white transition-colors">Home</a>
-                    <a href="#about" className="hover:text-white transition-colors">About</a>
-                    <a href="#track-record" className="hover:text-white transition-colors">Achievements</a>
-                    <a href="#updates" className="hover:text-white transition-colors">Updates</a>
-                    <a href="#sponsors" className="hover:text-white transition-colors">Sponsors</a>
-                </div>
+        <nav className="fixed top-0 left-0 h-screen w-20 flex flex-col items-center gap-y-8 py-8 bg-black/20 backdrop-blur-md border-r border-white/10 z-[100]">
+            <a href="#home" aria-label="Back to top">
+                <img src="/assets/logo.png" alt="Logo" className="h-10 w-auto" />
+            </a>
+            
+            <div className="flex flex-col gap-y-5">
+                {navLinks.map((link) => (
+                    <NavLink key={link.href} {...link} />
+                ))}
             </div>
         </nav>
     );
