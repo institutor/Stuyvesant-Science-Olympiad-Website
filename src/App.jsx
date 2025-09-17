@@ -20,7 +20,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const formatBannerDate = (dateString) => {
     const options = { month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' };
-    return new Date(dateString).toLocaleDateDateString('en-US', options);
+    return new Date(dateString).toLocaleDateString('en-US', options);
 };
 
 function App() {
@@ -96,7 +96,6 @@ function App() {
       
       <div style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s' }}>
         <Navbar />
-        {/* This div now wraps all main content and pushes it to the right */}
         <div className="pl-20"> 
             <AnimatePresence>
                 {nextEvent && (
