@@ -45,8 +45,7 @@ function App() {
     { x: 0, y: 0, z: 20 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 8, z: 5 },
     { x: -8, y: 3, z: 5 }, { x: 8, y: -3, z: 5 }, { x: 0, y: 0, z: 25 }
   ];
-
-  useEffect(() => {
+ useEffect(() => {
     const url = '/api/getCalendarEvents';
     const fetchEvents = async () => {
         try {
@@ -62,6 +61,27 @@ function App() {
     };
     fetchEvents();
   }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      const heroSection = sectionRefs.hero.current;
+      if (!heroSection) return;
+      const timer = setTimeout(() => {
+        const targetPosition = heroSection.offsetTop;
+        const targetHeight = heroSection.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const scrollToPosition = targetPosition - (windowHeight / 2) + (targetHeight / 2);
+
+        gsap.to(window, {
+          duration: 1.5,
+          scrollTo: scrollToPosition,
+          ease: 'power2.inOut',
+        });
+      }, 100);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isLoaded]); 
 
   useGSAP(() => {
     if (!isLoaded) return;
@@ -93,7 +113,6 @@ function App() {
       <CustomCursor />
       <ConstellationBackground ref={backgroundRef} />
       {!isLoaded && <Preloader onLoaded={() => setIsLoaded(true)} />}
-      
       <div style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s' }}>
         <Navbar />
         <div className="pl-20"> 
@@ -111,7 +130,6 @@ function App() {
                     </StickyBanner>
                 )}
             </AnimatePresence>
-
             <main ref={mainContainerRef}>
                 <Hero ref={sectionRefs.hero} isLoaded={isLoaded} />
                 <About ref={sectionRefs.about} />

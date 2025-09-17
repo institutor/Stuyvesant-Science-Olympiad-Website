@@ -14,12 +14,24 @@ const navLinks = [
 
 const handleLinkClick = (e, href) => {
     e.preventDefault();
+    const targetElement = document.querySelector(href);
+    if (!targetElement) return;
+    if (href === "#home") {
+        gsap.to(window, {
+            duration: 1.5,
+            scrollTo: 0,
+            ease: 'power2.inOut'
+        });
+        return;
+    }
+    const targetPosition = targetElement.offsetTop;
+    const targetHeight = targetElement.offsetHeight;
+    const windowHeight = window.innerHeight;
+    const scrollToPosition = targetPosition - (windowHeight / 2) + (targetHeight / 2);
+
     gsap.to(window, { 
         duration: 1.5,
-        scrollTo: { 
-            y: href, 
-            align: "center" 
-        },
+        scrollTo: scrollToPosition,
         ease: 'power2.inOut'
     });
 };
