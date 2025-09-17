@@ -2,31 +2,29 @@ import { forwardRef, useState, useEffect } from 'react';
 import GlassCard from '../ui/GlassCard';
 
 const Updates = forwardRef((props, ref) => {
-    // State to hold your events, loading status, and any errors
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
     useEffect(() => {
-        const now = new Date().toISOString();
-        const url = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events?key=${API_KEY}&timeMin=${now}&maxResults=6&singleEvents=true&orderBy=startTime`;
+        const url = '/api/getCalendarEvents';
+
         const fetchEvents = async () => {
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
-                    throw new Error(`Google API responded with status: ${response.status}`);
+                    throw new Error(`Our server responded with status: ${response.status}`);
                 }
                 const data = await response.json();
                 setEvents(data.items || []);
             } catch (err) {
-                console.error("Error fetching Google Calendar events:", err);
+                console.error("Error fetching events:", err);
                 setError(err.message);
             } finally {
                 setLoading(false);
             }
         };
         fetchEvents();
-    }, []); 
+    }, []);
 
     const renderContent = () => {
         if (loading) {
@@ -44,7 +42,6 @@ const Updates = forwardRef((props, ref) => {
             </div>
         );
     };
-
     return (
         <section ref={ref} className="content-section" id="updates">
             <div className="max-w-6xl mx-auto px-8">
