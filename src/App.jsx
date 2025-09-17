@@ -82,7 +82,8 @@ function App() {
         <Updates ref={sectionRefs.updates} />
         <Sponsors ref={sectionRefs.sponsors} />
         <CTA ref={sectionRefs.cta} />
-      </div>
+        <div className="h-[50vh]" />
+      </div>h
     </main>
   );
 }
