@@ -42,7 +42,7 @@ function App() {
   };
 
   const cameraPositions = [
-    { x: 0, y: 0, z: 20 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 10, z: 3 },
+    { x: 0, y: 0, z: 20 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 8, z: 5 },
     { x: -8, y: 3, z: 5 }, { x: 8, y: -3, z: 5 }, { x: 0, y: 0, z: 25 }
   ];
 
