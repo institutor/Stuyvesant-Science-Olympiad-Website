@@ -47,9 +47,9 @@ const Sponsors = forwardRef((props, ref) => (
             />
             <div className="text-center mt-16">
                 <p className="text-gray-400 mb-4">Interested in supporting our team?</p>
-                <a href="mailto:sponsorship@example.com?subject=Sponsorship Inquiry" target="_blank" rel="noopener noreferrer">
-                    <VeryCoolShinyButtonThing>Become a Sponsor</VeryCoolShinyButtonThing>
-                </a>
+                <div className="relative">
+                    <VeryCoolShinyButtonThing onClick={() => alert("Sorry I have nothing to put here yet")}>Become a Sponsor</VeryCoolShinyButtonThing>
+                </div>
             </div>
         </div>
     </section>

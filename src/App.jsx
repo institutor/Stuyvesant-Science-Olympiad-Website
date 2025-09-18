@@ -3,7 +3,6 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatePresence } from 'framer-motion';
-
 import Preloader from './components/layout/Preloader';
 import Navbar from './components/layout/Navbar';
 import { StickyBanner } from './components/ui/StickyBanner';
@@ -28,10 +27,8 @@ function App() {
   const [events, setEvents] = useState([]);
   const [loadingEvents, setLoadingEvents] = useState(true);
   const [eventsError, setEventsError] = useState(null);
-
   const backgroundRef = useRef();
   const mainContainerRef = useRef();
-  
   const sectionRefs = {
     hero: useRef(),
     about: useRef(),
