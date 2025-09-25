@@ -112,7 +112,7 @@ function App() {
       {!isLoaded && <Preloader onLoaded={() => setIsLoaded(true)} />}
       <div style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s' }}>
         <Navbar />
-        <div className="pl-20"> 
+        <div className="md:pl-20"> 
             <AnimatePresence>
                 {nextEvent && (
                     <StickyBanner>

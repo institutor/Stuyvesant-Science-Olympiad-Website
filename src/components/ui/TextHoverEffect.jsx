@@ -81,7 +81,7 @@ export const TextHoverEffect = ({
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{ strokeDashoffset: 0 }}
         transition={{ duration: 4, ease: "easeInOut" }}
-        style={{ fontSize: '7rem' }}
+        style={{ fontSize: 'inherit' }}
       >
         {text}
       </motion.text>
@@ -95,7 +95,7 @@ export const TextHoverEffect = ({
         className="fill-transparent font-bold"
         filter="url(#glow)"
         style={{
-          fontSize: '7rem',
+          fontSize: 'inherit',
           opacity: hovered ? 0.8 : 0, 
           transition: 'opacity 0.2s ease-in-out'
         }}
@@ -111,7 +111,7 @@ export const TextHoverEffect = ({
         strokeWidth="0.6"
         mask="url(#textMask)"
         className="fill-transparent font-bold"
-        style={{ fontSize: '7rem' }}
+        style={{ fontSize: 'inherit' }}
       >
         {text}
       </text>

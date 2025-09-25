@@ -33,7 +33,7 @@ const sponsorData = [
 const Sponsors = forwardRef((props, ref) => (
     <section ref={ref} className="content-section flex items-center justify-center" id="sponsors">
         <div className="max-w-6xl w-full mx-auto px-8">
-            <h2 className="text-5xl font-bold mb-16 text-center">Our Valued Sponsors</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Our Valued Sponsors</h2>
             <LogoLoop
                 logos={sponsorData}
                 speed={100}

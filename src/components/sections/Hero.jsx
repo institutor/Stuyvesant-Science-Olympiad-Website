@@ -36,7 +36,6 @@ const Hero = forwardRef(({ isLoaded }, ref) => {
                 
                 <div className="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2">
                     <p className="text-sm opacity-60 mb-2">Scroll to Explore</p>
-                    {/* The viewBox attribute is corrected here to be "0 0 24 24" */}
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mx-auto">
                         <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
                     </svg>

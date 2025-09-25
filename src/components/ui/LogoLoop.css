@@ -47,7 +47,7 @@
   padding: 1rem 1.5rem; 
   border-radius: 12px;
   font-weight: 600;
-  white-space: nowrap; /* Omg i fixed it */
+  white-space: nowrap; 
   background-color: rgba(30, 41, 59, 0.3); 
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);

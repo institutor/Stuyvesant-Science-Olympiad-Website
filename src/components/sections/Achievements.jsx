@@ -33,7 +33,7 @@ const achievements = [
 
 const Achievements = forwardRef((props, ref) => (
     <section ref={ref} className="content-section flex-col items-center justify-center" id="achievements">
-        <h2 className="text-5xl font-bold mb-12 text-center">Our Track Record</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Our Track Record</h2>
         <StickyScroll content={achievements} />
     </section>
 ));

@@ -23,7 +23,7 @@ const Updates = forwardRef(({ events, loading, error }, ref) => {
     return (
         <section ref={ref} className="content-section" id="updates">
             <div className="max-w-6xl mx-auto px-8">
-                <h2 className="text-5xl font-bold mb-12 text-center">Upcoming Events</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">Upcoming Events</h2>
                 {renderContent()}
             </div>
         </section>
