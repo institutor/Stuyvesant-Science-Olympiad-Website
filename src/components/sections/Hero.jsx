@@ -1,10 +1,13 @@
-import { forwardRef } from 'react';
+import { forwardRef, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { TextHoverEffect } from '../ui/TextHoverEffect';
+import { Link } from 'react-router-dom';
+import VeryCoolShinyButtonThing from '../ui/VeryCoolShinyButtonThing';
 
 const Hero = forwardRef(({ isLoaded }, ref) => {
-    
+    const galleryButtonRef = useRef(null);
+
     useGSAP(() => {
         if(isLoaded) {
             gsap.to('.hero-title-char', {
@@ -15,11 +18,23 @@ const Hero = forwardRef(({ isLoaded }, ref) => {
                 ease: "power3.out",
                 delay: 0.5
             });
+
+            gsap.fromTo(galleryButtonRef.current, 
+                { scale: 0.8, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 1, ease: "elastic.out(1, 0.5)", delay: 1.5 }
+            );
         }
     }, { dependencies: [isLoaded], scope: ref });
 
     return (
         <section ref={ref} className="content-section relative flex items-center justify-center text-center" id="home">
+            <div className="absolute top-4 right-4" ref={galleryButtonRef}>
+                <Link to="/gallery">
+                    <VeryCoolShinyButtonThing className="px-8 py-3 text-lg">
+                        Gallery
+                    </VeryCoolShinyButtonThing>
+                </Link>
+            </div>
             <div>
                 <h1 className="hero-title">
                     <div className="h-16 md:h-24 mb-8">

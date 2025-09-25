@@ -1,4 +1,6 @@
 import { forwardRef } from 'react';
+import { Link } from 'react-router-dom';
+import VeryCoolShinyButtonThing from '../ui/VeryCoolShinyButtonThing';
 
 const About = forwardRef((props, ref) => (
     <section ref={ref} className="content-section flex items-center justify-center" id="about">
@@ -14,6 +16,14 @@ const About = forwardRef((props, ref) => (
                 <p>
                     And competition is just part of what we do. We foster a great community of science-oriented individuals and teach everyone the skills they need to succeed!
                 </p>
+            </div>
+            <div className="mt-12">
+                <p className="text-xl text-gray-300 mb-4">Also, check out our gallery!</p>
+                <Link to="/gallery">
+                    <VeryCoolShinyButtonThing className="px-8 py-3 text-lg">
+                        View Gallery
+                    </VeryCoolShinyButtonThing>
+                </Link>
             </div>
         </div>
     </section>

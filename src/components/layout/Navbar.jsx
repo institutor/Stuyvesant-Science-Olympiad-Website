@@ -1,18 +1,21 @@
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { FiHome, FiInfo, FiAward, FiMessageSquare, FiHeart } from 'react-icons/fi';
+import { FiHome, FiInfo, FiMessageSquare, FiHeart } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollToPlugin);
 
 const navLinks = [
     { href: "#home", label: "Home", icon: FiHome },
     { href: "#about", label: "About", icon: FiInfo },
-    { href: "#achievements", label: "Achievements", icon: FiAward },
     { href: "#updates", label: "Updates", icon: FiMessageSquare },
     { href: "#sponsors", label: "Sponsors", icon: FiHeart },
 ];
 
 const handleLinkClick = (e, href) => {
+    if (href.startsWith('/')) {
+        return;
+    }
     e.preventDefault();
     const targetElement = document.querySelector(href);
     if (!targetElement) return;
@@ -36,18 +39,31 @@ const handleLinkClick = (e, href) => {
     });
 };
 
-const NavLink = ({ href, label, icon: Icon }) => (
-    <a 
-      href={href} 
-      onClick={(e) => handleLinkClick(e, href)}
-      className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-slate-800/50 hover:bg-cyan-500/50 transition-colors"
-    >
-        <Icon className="h-6 w-6 text-slate-300 group-hover:text-white" />
-        <div className="absolute left-full ml-4 px-3 py-2 bg-slate-800 text-slate-200 text-sm rounded-md whitespace-nowrap opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all origin-left hidden md:block">
-            {label}
-        </div>
-    </a>
-);
+const NavLink = ({ href, label, icon: Icon }) => {
+    if (href.startsWith('/')) {
+        return (
+            <Link to={href} className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-slate-800/50 hover:bg-cyan-500/50 transition-colors">
+                <Icon className="h-6 w-6 text-slate-300 group-hover:text-white" />
+                <div className="absolute left-full ml-4 px-3 py-2 bg-slate-800 text-slate-200 text-sm rounded-md whitespace-nowrap opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all origin-left hidden md:block">
+                    {label}
+                </div>
+            </Link>
+        );
+    }
+
+    return (
+        <a 
+        href={href} 
+        onClick={(e) => handleLinkClick(e, href)}
+        className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-slate-800/50 hover:bg-cyan-500/50 transition-colors"
+        >
+            <Icon className="h-6 w-6 text-slate-300 group-hover:text-white" />
+            <div className="absolute left-full ml-4 px-3 py-2 bg-slate-800 text-slate-200 text-sm rounded-md whitespace-nowrap opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all origin-left hidden md:block">
+                {label}
+            </div>
+        </a>
+    );
+}
 
 const Navbar = () => {
     return (

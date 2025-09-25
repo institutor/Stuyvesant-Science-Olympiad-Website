@@ -10,7 +10,6 @@ import CustomCursor from './components/ui/CustomCursor';
 import ConstellationBackground from './components/layout/ConstellationBackground';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
-import Achievements from './components/sections/Achievements';
 import Updates from './components/sections/Updates';
 import Sponsors from './components/sections/Sponsors';
 import CTA from './components/sections/CTA';
@@ -32,14 +31,13 @@ function App() {
   const sectionRefs = {
     hero: useRef(),
     about: useRef(),
-    achievements: useRef(),
     updates: useRef(),
     sponsors: useRef(),
     cta: useRef(),
   };
 
   const cameraPositions = [
-    { x: 0, y: 0, z: 20 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 8, z: 5 },
+    { x: 0, y: 0, z: 20 }, { x: 0, y: 0, z: 0 },
     { x: -8, y: 3, z: 5 }, { x: 8, y: -3, z: 5 }, { x: 0, y: 0, z: 25 }
   ];
  useEffect(() => {
@@ -86,20 +84,22 @@ function App() {
     if (!camera) return;
     const sections = Object.values(sectionRefs).map(ref => ref.current);
     sections.forEach((section, index) => {
-        if (index > 0) {
+        if (section && index > 0) {
             gsap.from(section.firstChild, {
                 y: 100, opacity: 0,
                 scrollTrigger: { trigger: section, start: 'top 85%', end: 'center 75%', scrub: 1 }
             });
         }
-        ScrollTrigger.create({
-            trigger: section, start: 'top center', end: 'bottom center',
-            onToggle: self => {
-                if (self.isActive) {
-                    gsap.to(camera.position, { ...cameraPositions[index], duration: 2, ease: "power2.inOut" });
-                }
-            },
-        });
+        if(section) {
+            ScrollTrigger.create({
+                trigger: section, start: 'top center', end: 'bottom center',
+                onToggle: self => {
+                    if (self.isActive) {
+                        gsap.to(camera.position, { ...cameraPositions[index], duration: 2, ease: "power2.inOut" });
+                    }
+                },
+            });
+        }
     });
   }, { dependencies: [isLoaded], scope: mainContainerRef });
 
@@ -130,7 +130,6 @@ function App() {
             <main ref={mainContainerRef}>
                 <Hero ref={sectionRefs.hero} isLoaded={isLoaded} />
                 <About ref={sectionRefs.about} />
-                <Achievements ref={sectionRefs.achievements} />
                 <Updates ref={sectionRefs.updates} events={events} loading={loadingEvents} error={eventsError} />
                 <Sponsors ref={sectionRefs.sponsors} />
                 <CTA ref={sectionRefs.cta} />
