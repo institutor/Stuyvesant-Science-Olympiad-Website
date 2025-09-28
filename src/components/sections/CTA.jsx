@@ -10,11 +10,11 @@ const CTA = forwardRef((props, ref) => (
         <div className="text-center">
             <h2 className="text-4xl md:text-6xl font-bold mb-8">Ready to Compete?</h2>
             <p className="text-lg md:text-2xl text-gray-300 mb-12">Join us in pushing the boundaries of scientific excellence</p>
-            <a href="https://epsilon.stuysu.org/stuyoly" target="_blank" rel="noopener noreferrer">
-                <VeryCoolShinyButtonThing className="px-12 py-4 text-xl">
-                    Learn More
-                </VeryCoolShinyButtonThing>
-            </a>
+                <a href="https://epsilon.stuysu.org/stuyoly" target="_blank" rel="noopener noreferrer">
+                    <VeryCoolShinyButtonThing className="px-12 py-4 text-xl">
+                        Learn More
+                    </VeryCoolShinyButtonThing>
+                </a>
         </div>
     </section>
 ));

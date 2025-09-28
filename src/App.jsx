@@ -13,6 +13,7 @@ import About from './components/sections/About';
 import Updates from './components/sections/Updates';
 import Sponsors from './components/sections/Sponsors';
 import CTA from './components/sections/CTA';
+import Contact from './components/sections/Contact';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -34,11 +35,12 @@ function App() {
     updates: useRef(),
     sponsors: useRef(),
     cta: useRef(),
+    contact: useRef(),
   };
 
   const cameraPositions = [
     { x: 0, y: 0, z: 20 }, { x: 0, y: 0, z: 0 },
-    { x: -8, y: 3, z: 5 }, { x: 8, y: -3, z: 5 }, { x: 0, y: 0, z: 25 }
+    { x: -8, y: 3, z: 5 }, { x: 8, y: -3, z: 5 }, { x: 0, y: 0, z: 25 }, { x: 0, y: 0, z: 20 }
   ];
  useEffect(() => {
     const url = '/api/getCalendarEvents';
@@ -133,6 +135,7 @@ function App() {
                 <Updates ref={sectionRefs.updates} events={events} loading={loadingEvents} error={eventsError} />
                 <Sponsors ref={sectionRefs.sponsors} />
                 <CTA ref={sectionRefs.cta} />
+                <Contact ref={sectionRefs.contact} />
                 <div className="h-[30vh]" />
             </main>
         </div>

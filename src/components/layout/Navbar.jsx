@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { FiHome, FiInfo, FiMessageSquare, FiHeart } from 'react-icons/fi';
+import { FiHome, FiInfo, FiMessageSquare, FiHeart, FiMail } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollToPlugin);
